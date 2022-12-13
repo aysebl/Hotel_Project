@@ -1,0 +1,59 @@
+﻿@model Hotel_Project.Models.Room
+@{
+    ViewBag.Title = "Ekle";
+    Layout = "~/Views/Shared/_LayoutPageAdmin.cshtml";
+}
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken() <!--Gelen saldırıları engellemek için kullanılan bir haper metoddur. her bir ekleme için benzersiz bir id oluşturulmasını sağlar.-->
+    <div class="form-horizontal">
+        <!--Başlangıç div-->
+        <h4>Oda Ekle</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" }) <!--Gelen verilerin kontrolunu sağlar.-->
+        <div class="form-group">
+            @Html.LabelFor(model => model.RoomPrice, htmlAttributes: new { @class = "control-label col-md-2" }) <!--İsmin çıkmasını sağlar.-->
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.RoomPrice, new { htmlAttributes = new { @class = "form-control" } }) <!--textboxlara burdan geliyor.-->
+                @Html.ValidationMessageFor(model => model.RoomPrice, "", new { @class = "text-danger" }) <!--hata varsa tekrar başa yollar.ve toptan olarak uyarı yollar. veri girişi olan alanların kontrolunu sağlar.-->
+            </div>
+
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.BedCount, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.BedCount, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.BedCount, "", new { @class = "text-danger" })
+            </div>
+
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.RoomType, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.RoomType, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.RoomType, "", new { @class = "text-danger" })
+            </div>
+
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.ServiceID, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.ServiceID, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.ServiceID, "", new { @class = "text-danger" })
+            </div>
+
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset col-md-10">
+                <input type="submit" value="Create" class="btn btn-primary" \ />
+            </div>
+        </div>
+    </div><!--Bitiş divi-->
+
+}
+<div>
+    @Html.ActionLink("AnaSayfa", "Index")
+</div>
+

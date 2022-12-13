@@ -1,0 +1,48 @@
+﻿@model IEnumerable<Hotel_Project.Models.Room>
+
+
+    @{
+        ViewBag.Title = "Index";
+        Layout = "~/Views/Shared/_LayoutPageAdmin.cshtml";
+    }
+
+    <h4>Oda Listele<br /></h4>
+    <p>
+        @Html.ActionLink("Oda Ekle", "Ekle", null, new { @class = "btn btn-success" })
+    </p>
+    <table class="table-striped alert-danger col-md-12">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(Model => Model.RoomPrice)
+            </th>
+            <th>
+                @Html.DisplayNameFor(Model => Model.BedCount)
+            </th>
+
+            <th>
+                @Html.DisplayNameFor(Model => Model.ServiceID)
+            </th>
+            <th>
+                <!--burası boş kalacak-->
+            </th>
+        </tr>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(ModelItem => item.RoomPrice)
+                </td>
+                <td>
+                    @Html.DisplayFor(ModelItem => item.BedCount)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(ModelItem => item.ServiceID)
+                </td>
+                <td>
+                    @Html.ActionLink("Düzenle", "Duzenle", new { id = item.RoomID }, new { @class = "btn btn-warning" })
+                    @Html.ActionLink("Sil", "Delete", new { id = item.RoomID }, new { @class = "btn btn-danger" })
+                </td>
+            </tr>
+        }
+    </table>
